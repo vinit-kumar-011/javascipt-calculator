@@ -37,6 +37,10 @@
                 let lastChar = display.value.slice(-1);
                 let operators = ['+', '-', '*', '/'];
 
+                if(display.value == "" && operators.includes(value)){
+                    return;
+                }
+
                 if(operators.includes(value) && operators.includes(lastChar)){
                     return;
                 }
