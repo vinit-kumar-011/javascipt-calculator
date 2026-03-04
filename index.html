@@ -18,6 +18,7 @@
         <button onclick="press(8)">8</button>
         <button onclick="press(9)">9</button>
         <button onclick="press(0)">0</button>
+        <button onclick="press('.')">.</button>
 
         <button onclick="press('+')">+</button>
         <button onclick="press('-')">-</button>
@@ -31,8 +32,16 @@
         <script>
             let display = document.getElementById("display");
             
-            function press(num){
-                display.value += num;
+            function press(value){
+
+                let lastChar = display.value.slice(-1);
+                let operators = ['+', '-', '*', '/'];
+
+                if(operators.includes(value) && operators.includes(lastChar)){
+                    return;
+                }
+
+                display.value += value;
             }
 
             function calculate(){
@@ -47,6 +56,25 @@
             function clearDisplay(){
                 display.value = "";
             }
+
+            function backspace(){
+                display.value = display.value.slice(0,-1);
+            }
+
+            document.addEventListener("keydown", function(event){
+
+                if(event.key == "Enter"){
+                    calculate();
+                }
+
+                else if(event.key == "Backspace"){
+                    backspace();
+                }
+
+                else if("0123456789+-/*.".includes(event.key)){
+                    press(event.key);
+                }
+            });
 
         </script>
     </body>
