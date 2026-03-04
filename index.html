@@ -24,12 +24,24 @@
         <button onclick="press('*')">*</button>
         <button onclick="press('/')">/</button>
 
+        <button onclick="calculate()">=</button>
+
         <script>
             let display = document.getElementById("display");
             
             function press(num){
                 display.value += num;
             }
+
+            function calculate(){
+                try{
+                    display.value = eval(display.value);
+                }
+                catch{
+                    display.value = "ERROR";
+                }
+            }
+
         </script>
     </body>
 </html>
