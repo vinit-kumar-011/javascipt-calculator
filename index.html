@@ -26,6 +26,8 @@
 
         <button onclick="calculate()">=</button>
 
+        <button onclick="clearDisplay()">Clear</button>
+
         <script>
             let display = document.getElementById("display");
             
@@ -40,6 +42,10 @@
                 catch{
                     display.value = "ERROR";
                 }
+            }
+            
+            function clearDisplay(){
+                display.value = "";
             }
 
         </script>
